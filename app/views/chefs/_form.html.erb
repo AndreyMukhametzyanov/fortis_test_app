@@ -1,0 +1,27 @@
+<%= form_with(model: chef) do |form| %>
+  <% if chef.errors.any? %>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading"><%= pluralize(chef.errors.count, "error") %> prohibited this chef from being saved:</h4>
+      <ul>
+        <% chef.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter chef's name" %>
+  </div>
+
+  <div class="mb-3 mt-4">
+    <%= form.label :bio, class: "form-label" %>
+    <%= form.text_area :bio, class: "form-control", rows: 3, placeholder: "Enter chef's bio" %>
+  </div>
+
+  <div class="d-flex justify-content-between" style="margin-top: 10px;">
+    <%= link_to "Back", chefs_path, class: "btn btn-secondary" %>
+    <%= form.submit "Save Chef", class: "btn btn-success" %>
+  </div>
+<% end %>

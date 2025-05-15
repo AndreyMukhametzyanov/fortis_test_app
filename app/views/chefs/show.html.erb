@@ -1,0 +1,76 @@
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-end mb-3">
+    <%= link_to "← Back to Chefs", chefs_path, class: "" %>
+  </div>
+
+<div class="card shadow mb-5">
+  <div class="card-header bg-white text-dark">
+    <h2 class="card-title mb-0"><%= @chef.name %></h2>
+  </div>
+  
+  <div class="card-body">
+    <div class="row align-items-start">
+      <div class="col-md-8">
+        <dl class="row mb-0">
+          <dt class="col-sm-1">Bio:</dt>
+          <dd class="col-sm-9"><%= @chef.bio.present? ? @chef.bio : content_tag(:span, "No bio added", class: "text-muted") %></dd>
+        </dl>
+      </div>
+
+      <div class="col-md-4 mt-3 mt-md-0">
+        <div class="d-flex justify-content-end">
+          <div class="mx-3">
+            <%= link_to "Edit Chef", edit_chef_path(@chef), class: "btn btn-warning" %>
+          </div>
+          <div>
+            <%= button_to "Delete Chef", @chef, method: :delete, class: "btn btn-danger", data: { turbo_confirm: "Are you sure?" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Recipes</h3>
+    <%= link_to "Add New Recipe", new_chef_recipe_path(@chef, @recipe), class: "btn btn-success" %>
+  </div>
+
+  <div class="card shadow">
+    <div class="card-body p-0">
+      <table class="table table-hover mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Recipe Title</th>
+            <th>Ingredients</th>
+            <th>Instructions</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+          <tbody>
+            <% if @chef.recipes.any? %>
+              <% @chef.recipes.each do |recipe| %>
+                <tr>
+                  <td><%= recipe.name %></td>
+                  <td><%= recipe.ingredients %></td>
+                  <td><%= recipe.instructions %></td>
+                  <td>
+                    <%= link_to "View", recipe, class: "btn btn-info" %>
+                    <%= link_to "Edit", edit_recipe_path(recipe), class: "btn btn-warning" %>
+                    <%= link_to "Delete", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+                  </td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td colspan="4" class="text-center text-muted py-4">No recipes yet</td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,29 @@
+
+AllCops:
+  TargetRubyVersion: 3.4
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - 'bin/*'
+    - 'config/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'bin/*'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'bin/*'
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - 'bin/*'
+    - 'test/**/*'

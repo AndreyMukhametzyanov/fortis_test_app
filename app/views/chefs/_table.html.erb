@@ -1,0 +1,24 @@
+<table class="table table-hover table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Name</th>
+      <th>Bio</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @chefs.each_with_index do |chef, i| %>
+      <tr>
+        <td><%= i + 1 %></td>
+        <td><%= chef.name %></td>
+        <td><%= chef.bio %></td>
+        <td>
+          <%= link_to "Show", chef, class: "btn btn-info btn-sm" %>
+          <%= link_to "Edit", edit_chef_path(chef), class: "btn btn-warning btn-sm" %>
+          <%= link_to "Delete", chef, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
