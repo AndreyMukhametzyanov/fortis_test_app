@@ -4,7 +4,7 @@
 ## Особенности
 
 - Ruby **3.4.\***
-- Rails **7.0.\***
+- Rails **7.1.\***
 - PostgreSQL
 - JavaScript-фреймворк **Stimulus** через `importmap`
 
